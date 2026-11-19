@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "luxdatareader"
+version = "0.1.1"
+description = "Read any data file into a pandas DataFrame with one call, without specifying its type"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "luxdev-hq", email = "luxtinc@gmail.com" }]
+keywords = ["pandas", "dataframe", "csv", "excel", "parquet", "json", "file reader"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = ["pandas>=2.0"]
+
+[project.optional-dependencies]
+excel = ["openpyxl", "xlrd", "odfpy", "pyxlsb"]
+parquet = ["pyarrow"]
+xml = ["lxml"]
+html = ["lxml", "beautifulsoup4", "html5lib"]
+hdf = ["tables"]
+spss = ["pyreadstat"]
+all = ["luxdatareader[excel,parquet,xml,html,hdf,spss]"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
